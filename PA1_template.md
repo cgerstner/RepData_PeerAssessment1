@@ -108,6 +108,15 @@ ggplot(interval_tot,  aes(interval_tot$Interval, interval_tot$Steps, group = 1))
 Wow, it looks like this person goes back and forth from their desk to get ***A LOT*** of coffee at
 the beginning of the work day.
 
+When is their maximum interval, you may ask? Easily learned.
+
+```r
+interval_tot[interval_tot$Steps == max(interval_tot$Steps),]$Interval
+```
+
+```
+## [1] "08:35"
+```
 <br><br>
 
 ## Imputing missing values
@@ -155,7 +164,7 @@ ggplot(data = daily_nona, aes(x = daily_nona$Date, y = daily_nona$Steps)) +
   labs(x = "Date", y = "Steps")
 ```
 
-<img src="PA1_template_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="PA1_template_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 Well, that's not too different. Certainly we have a few days that have bars now that didn't then.
 A few jumped up a bit. It's not surprising that it's not too different, after all, the NA values
@@ -201,7 +210,7 @@ ggplot(interval_no_na,  aes(interval_no_na$time, interval_no_na$steps, group = 1
   facet_grid(. ~ daytype)
 ```
 
-<img src="PA1_template_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="PA1_template_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
 
 Verdict? Probably big into work coffee. A little home coffee, too, sure... but definitely hitting
 the office coffee maker. It is worth noting that before, when we imputed previously NA values, we

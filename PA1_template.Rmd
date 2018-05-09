@@ -93,6 +93,10 @@ ggplot(interval_tot,  aes(interval_tot$Interval, interval_tot$Steps, group = 1))
 Wow, it looks like this person goes back and forth from their desk to get ***A LOT*** of coffee at
 the beginning of the work day.
 
+When is their maximum interval, you may ask? Easily learned.
+```{r}
+interval_tot[interval_tot$Steps == max(interval_tot$Steps),]$Interval
+```
 <br><br>
 
 ## Imputing missing values
