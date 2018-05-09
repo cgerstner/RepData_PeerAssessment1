@@ -168,7 +168,22 @@ ggplot(data = daily_nona, aes(x = daily_nona$Date, y = daily_nona$Steps)) +
 
 Well, that's not too different. Certainly we have a few days that have bars now that didn't then.
 A few jumped up a bit. It's not surprising that it's not too different, after all, the NA values
-were only 15% or so of the total.
+were only 15% or so of the total. Let's find out what the new mean and median are.
+
+
+```r
+daily_avg_nona <- mean(daily_nona$Steps)
+daily_mdn_nona <- median(daily_nona$Steps)
+cat("Average steps per day: ", daily_avg_nona, "\nMedian steps per day: ", daily_mdn_nona, "\n")
+```
+
+```
+## Average steps per day:  10767.19 
+## Median steps per day:  10767.19
+```
+
+Hey, now the median involves this person taking a .17 step, and the median is the same as the
+average. That's what you get for averaging and not using a rounding function.
 <br><br>
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -210,7 +225,7 @@ ggplot(interval_no_na,  aes(interval_no_na$time, interval_no_na$steps, group = 1
   facet_grid(. ~ daytype)
 ```
 
-<img src="PA1_template_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="PA1_template_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 Verdict? Probably big into work coffee. A little home coffee, too, sure... but definitely hitting
 the office coffee maker. It is worth noting that before, when we imputed previously NA values, we
